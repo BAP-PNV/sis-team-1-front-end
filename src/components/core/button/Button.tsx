@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge"
+
 interface ButtonProps
 {
    title: string
@@ -7,7 +9,7 @@ interface ButtonProps
 function Button(props: ButtonProps)
 {
    return (
-      <button className={`${props.className} w-full bg-black p-3 text-white text-xl font-bold rounded-[7px]`}>
+      <button className={twMerge("w-full bg-green-800 p-3 text-white text-xl font-bold rounded-[7px]", props.className )}>
          {props.title}
       </button>
    )
