@@ -2,6 +2,7 @@ function DashboardPage()
 {
    return (
       <main>
+         test
       </main>
    )
 }

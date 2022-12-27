@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import reportWebVitals from './reportWebVitals'
 import "./style/index.css"
-import {SignUpPage} from "./pages"
+import {DashboardPage} from "./pages"
 
 const root = ReactDOM.createRoot(
    document.getElementById('root') as HTMLElement
@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
    <React.StrictMode>
-      <SignUpPage/>
+      <DashboardPage/>
    </React.StrictMode>
 )
 
