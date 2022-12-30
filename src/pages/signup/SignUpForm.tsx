@@ -1,4 +1,4 @@
-import {Button, TextInput} from "../../components/core";
+import {Button, TextInput} from "../../components";
 
 interface SignUpFormProps
 {

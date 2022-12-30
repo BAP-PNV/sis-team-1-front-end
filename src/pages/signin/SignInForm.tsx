@@ -1,4 +1,4 @@
-import {TextInput, Button, LinkButton} from "../../components/core";
+import {TextInput, Button, LinkButton} from "../../components";
 
 interface SignInFormProps
 {
