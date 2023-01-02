@@ -1,4 +1,5 @@
-import {Button, TextInput} from "../../components";
+import {Button, TextInput} from "../../components"
+import {EmailRegex} from "../../utils"
 
 interface SignUpFormProps
 {
@@ -15,7 +16,7 @@ function SignUpForm(props: SignUpFormProps)
             <h1 className={"text-3xl font-black text-green-900 uppercase"}>the Fraking PHP</h1>
          </div>
 
-         <TextInput className={"mb-5"} placeholder={"email"} name={"email"}/>
+         <TextInput pattern={EmailRegex} className={"mb-5"} placeholder={"email"} name={"email"}/>
          <TextInput className={"mb-5"} placeholder={"password"} name={"password"}/>
          <TextInput className={"mb-5"} placeholder={"confirm password"} name={"confirm_password"}/>
 

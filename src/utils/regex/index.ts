@@ -1,0 +1,1 @@
+export {EmailRegex} from "./EmailRegex"
