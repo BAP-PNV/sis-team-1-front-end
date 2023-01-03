@@ -1,0 +1,6 @@
+function DashboardLayout()
+{
+
+}
+
+export {DashboardLayout}

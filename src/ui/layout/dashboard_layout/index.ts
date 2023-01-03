@@ -1,1 +1,1 @@
-export {}
+export {DashboardLayout} from "./DashboardLayout"
