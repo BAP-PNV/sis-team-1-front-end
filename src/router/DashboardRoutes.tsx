@@ -1,11 +1,12 @@
 import {Route, Routes} from "react-router-dom"
+import {DashboardLayout} from "../ui/layout";
 
 function DashboardRoutes()
 {
    return (
       <Routes>
          <Route path={"/"}>
-            <Route path={"home"} element={<div>dsadsdsad</div>}>
+            <Route path={"home"} element={<DashboardLayout/>}>
 
             </Route>
          </Route>
