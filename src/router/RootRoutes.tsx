@@ -1,6 +1,6 @@
 import {Route, Routes} from "react-router-dom"
-import {DashboardLayout} from "../ui/layout"
-import {SpacePage, RecentPage, AuthPage, RegisterPage, ConfirmPage, HomePage, DevPage} from "../ui/page"
+import {DashboardLayout} from "../presenter/layout"
+import {SpacePage, RecentPage, AuthPage, RegisterPage, ConfirmPage, HomePage, DevPage} from "../presenter/page"
 
 function RootRoutes()
 {

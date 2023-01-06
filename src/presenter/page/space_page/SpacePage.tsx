@@ -1,8 +1,10 @@
-import {HTMLAttributes} from "react"
+import {HTMLAttributes, useEffect, useState} from "react"
 import {twMerge} from "tailwind-merge";
 import {SpaceFolderContainer} from "./SpaceFolderContainer";
 import {SpaceFileContainer} from "./SpaceFileContainer";
 import {IoMdAddCircle} from "react-icons/io"
+import axios from "axios";
+import {env} from "../../../constant";
 
 type SpacePageProps =
 {
@@ -15,6 +17,24 @@ function SpacePage(props: SpacePageCustomProps)
 {
   const divProps: HTMLAttributes<HTMLDivElement> = props
   const spacePageProps: SpacePageProps = props
+
+  const [data, setData] = useState<any[]>([])
+
+  useEffect(() => {
+
+    axios.defaults.headers.common['Authorization'] = `bearer ${sessionStorage.getItem("token")}`
+
+    axios.get(`${env.apiEndpoint}/dashboard`)
+      .then((res) => {
+        setData(res.data)
+        console.log(res.data)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+
+  }, [])
+
 
   return (
     <div {...divProps} className={twMerge(divProps.className, "p-5")}>
