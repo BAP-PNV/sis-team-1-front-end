@@ -6,49 +6,22 @@ import {env} from "../../../constant";
 
 type FileContainerProps =
 {
-
+  fileList: any[]
 }
 
 type FileContainerCustomProps = HTMLAttributes<HTMLDivElement> & FileContainerProps
 
 function SpaceFileContainer(props: FileContainerCustomProps)
 {
-  const divProps: HTMLAttributes<HTMLDivElement> = props
-  const fileContainerProps: FileContainerProps = props
-
-  const [fileList, setFileList] = useState<any[]>([])
-
-  useEffect(() => {
-
-    axios.defaults.headers.common['Authorization'] = `bearer ${sessionStorage.getItem("token")}`
-
-    axios.get(`${env.apiEndpoint}/dashboard`)
-      .catch((res) => {
-        console.log(res.data)
-      })
-      .then((error) => {
-        console.error(error)
-      })
-
-  }, [])
-
   return (
-    <section {...divProps} className={twMerge(divProps.className, "")}>
+    <section className={twMerge(props.className, "")}>
       <h2 className={"text-2xl mb-3"}>Files</h2>
       <section className={"grid grid-cols-6 gap-4"}>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
-        <FileCard/>
+        {
+          props.fileList.map((file, index) => {            
+            return <FileCard url={file.url} name={file.name} key={index}/>
+          })
+        }
       </section>
     </section>
   )
