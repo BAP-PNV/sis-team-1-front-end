@@ -1,10 +1,11 @@
-import {HTMLAttributes, useEffect, useState} from "react"
+import {HTMLAttributes} from "react"
 import {twMerge} from "tailwind-merge";
 import {SpaceFolderContainer} from "./SpaceFolderContainer";
 import {SpaceFileContainer} from "./SpaceFileContainer";
 import {IoMdAddCircle} from "react-icons/io"
+import {useEffect, useState} from "react"
+import { env } from "../../../constant";
 import axios from "axios";
-import {env} from "../../../constant";
 
 type SpacePageProps =
 {
@@ -18,7 +19,8 @@ function SpacePage(props: SpacePageCustomProps)
   const divProps: HTMLAttributes<HTMLDivElement> = props
   const spacePageProps: SpacePageProps = props
 
-  const [data, setData] = useState<any[]>([])
+  const [fileList, setFileList] = useState<any[]>([])
+  const [folderList, setFolderList] = useState<any[]>([])
 
   useEffect(() => {
 
@@ -26,20 +28,21 @@ function SpacePage(props: SpacePageCustomProps)
 
     axios.get(`${env.apiEndpoint}/dashboard`)
       .then((res) => {
-        setData(res.data)
-        console.log(res.data)
+        setFileList(res.data.data.files)
+        setFolderList(res.data.data.folders)
       })
       .catch((error) => {
+        console.log("error");
+
         console.error(error)
       })
 
   }, [])
 
-
   return (
     <div {...divProps} className={twMerge(divProps.className, "p-5")}>
-      <SpaceFolderContainer className={"mb-14"}/>
-      <SpaceFileContainer/>
+      <SpaceFolderContainer folderList={folderList} className={"mb-14"}/>
+      <SpaceFileContainer fileList={fileList}/>
       <IoMdAddCircle className={"fixed bottom-14 right-14"} size={90} color={"green"}/>
     </div>
   )

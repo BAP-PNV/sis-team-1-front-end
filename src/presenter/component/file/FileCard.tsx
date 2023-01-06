@@ -5,23 +5,22 @@ import {BiDotsVerticalRounded} from "react-icons/bi"
 
 type FileCardProps =
 {
-
+  url: string
+  name: string
 }
 
 type FileCardCustomProps = HTMLAttributes<HTMLDivElement> & FileCardProps
 
 function FileCard(props: FileCardCustomProps)
 {
-  const divProps: HTMLAttributes<HTMLDivElement> = props
-  const fileCardProps: FileCardProps = props
 
   return (
-    <article {...divProps} className={twMerge(divProps.className, "relative border-gray-400 border-[1px] rounded")}>
-      <img className={"h-[200px] w-full object-cover"} src="https://plus.unsplash.com/premium_photo-1671749233342-20b24c04ba7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt=""/>
+    <article className={twMerge(props.className, "relative border-gray-400 border-[1px] rounded")}>
+      <img className={"h-[200px] w-full object-cover"} src={props.url} alt=""/>
       <section className={"flex items-center justify-between p-2"}>
         <div className={"flex items-center gap-5"}>
           <BsCardImage color={"green"}/>
-          <span className={"text-[12px]"}>this is a image</span>
+          <span className={"text-[12px]"}>{props.name}</span>
         </div>
         <BiDotsVerticalRounded/>
       </section>

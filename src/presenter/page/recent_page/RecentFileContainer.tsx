@@ -18,6 +18,7 @@ function RecentFileContainer(props: RecentFileContainerCustomProps)
     <section {...divProps} className={twMerge(divProps.className, "")}>
       <h2 className={"text-2xl mb-3"}>Files</h2>
       <section className={"grid grid-cols-6 gap-4"}>
+        {/* <FileCard/>
         <FileCard/>
         <FileCard/>
         <FileCard/>
@@ -29,8 +30,7 @@ function RecentFileContainer(props: RecentFileContainerCustomProps)
         <FileCard/>
         <FileCard/>
         <FileCard/>
-        <FileCard/>
-        <FileCard/>
+        <FileCard/> */}
       </section>
     </section>
   )
