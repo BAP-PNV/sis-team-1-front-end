@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals'
 import "./style/index.css"
 
 import {BrowserRouter} from "react-router-dom"
-import {DashboardRoutes} from "./router"
+import {RootRoutes} from "./router"
 
 const root = ReactDOM.createRoot(
    document.getElementById('root') as HTMLElement
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
    <React.StrictMode>
       <BrowserRouter>
-         <DashboardRoutes/>
+         <RootRoutes/>
       </BrowserRouter>
    </React.StrictMode>
 )

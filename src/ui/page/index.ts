@@ -1,1 +1,7 @@
-export {}
+export * from "./space_page"
+export * from "./recent_page"
+export * from "./auth_page"
+export * from "./register_page"
+export * from "./confirm_page"
+export * from "./home_page"
+export * from "./dev_page"

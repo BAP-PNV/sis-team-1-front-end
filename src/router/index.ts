@@ -1,1 +1,1 @@
-export {DashboardRoutes} from "./DashboardRoutes"
+export {RootRoutes} from "./RootRoutes"
