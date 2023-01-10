@@ -1,25 +1,36 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios"
-import {useEffect} from "react";
+import {useLayoutEffect, useState} from "react";
 import {env} from "../../../constant"
 
 function ConfirmPage()
 {
+  const navigate = useNavigate();
   const [query, setQuery] = useSearchParams()
+  const [error, setError] = useState<boolean | null>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     axios.post(`${env.apiEndpoint}/confirm`, {token: query.get("confirm-token")})
       .then((res) => {
-        console.log(res.data)
+        setError(false)
+        navigate("/space")
+        sessionStorage.setItem("token", res.data.data.token)
       })
       .catch((error) => {
+        setError(true)
         console.error(error)
       })
   }, [])
 
   return (
-    <div className={""}>
-      <h1>Great, Welcome to VCL</h1>
+    <div>
+      {
+        error === null ? (
+          <div>Loading</div>
+        ) : (
+          !error ? null : (<div>can not confirm your account, please visit the link that we send to your email</div>)
+        )
+      }
     </div>
   )
 }

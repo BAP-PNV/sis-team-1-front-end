@@ -17,13 +17,13 @@ function SpaceFolderContainer(props: FolderContainerCustomProps)
       <h2 className={"text-2xl mb-3"}>Folders</h2>
       <section className={"grid grid-cols-6 gap-4"}>
         {
-          props.folderList.map((folder, index) => {
+          props.folderList ? props.folderList.map((folder, index) => {
             return (
-              <Link key={index} to={"test"}>
+              <Link key={index} to={`/space/${folder.id}`}>
                 <FolderCard name={folder.name} id={folder.id}/>
               </Link>
             )
-          })
+          }) : <div>Loading...</div>
         }
       </section>
     </section>

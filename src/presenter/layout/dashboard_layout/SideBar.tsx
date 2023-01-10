@@ -1,10 +1,10 @@
 import React, {HTMLAttributes} from "react";
 import {twMerge} from "tailwind-merge";
 import {IconButton} from "../../component"
-import {CiTimer} from "react-icons/ci"
+import {CiTimer, CiLogout} from "react-icons/ci"
 import {IoFolderOpenOutline} from "react-icons/io5"
 import {BsCodeSlash} from "react-icons/bs"
-import {Link, useLocation} from "react-router-dom"
+import {Link, useLocation, useNavigate} from "react-router-dom"
 
 type SideBarProps =
 {
@@ -15,15 +15,16 @@ type SideBarCustomProps = HTMLAttributes<HTMLDivElement> & SideBarProps
 
 function SideBar(props: SideBarCustomProps)
 {
-  const divProps: HTMLAttributes<HTMLDivElement> = props
-  const sideNavProps: SideBarProps = props
-
   const location = useLocation().pathname
+  const nav = useNavigate()
 
-  console.log()
+  const logout = () => {
+    localStorage.setItem("token", "")
+    nav("/")
+  }
 
   return (
-    <div {...divProps} className={twMerge(divProps.className, "border-gray-300 border-r-[1px] py-5 px-4 bg-white")}>
+    <div className={twMerge(props.className, "border-gray-300 border-r-[1px] py-5 px-4 bg-white")}>
       <p className={"mb-3 font-medium"}>Pham Le Thanh Vu</p>
       <nav className={"flex flex-col"}>
         <Link to={"space"}>
@@ -35,7 +36,7 @@ function SideBar(props: SideBarCustomProps)
         <Link to={"dev"}>
           <IconButton className={`${location.slice(0, 4) === "/dev" ? "border-black rounded-md border-[1px]" : ""}`} icon={<BsCodeSlash size={25}/>} title={"Developer"}/>
         </Link>
-        {/*<IconButton icon={<BsCodeSlash size={25}/>} title={"Developer"}/>*/}
+        <IconButton onClick={logout} icon={<CiLogout size={25}/>} title={"log out"}/>
       </nav>
     </div>
   )

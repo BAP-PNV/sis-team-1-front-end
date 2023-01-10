@@ -1,8 +1,8 @@
 import {Button, LinkButton, TextInput} from "../../component"
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import axios from "axios";
 import {env} from "../../../constant";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 function AuthPage()
 {
@@ -17,13 +17,22 @@ function AuthPage()
       password: password
     })
       .then((res) => {
-        sessionStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("token", res.data.data.token);
         navigate("/space")
       })
       .catch((error) => {
         console.error(error)
       })
   }
+
+  const isAuth = localStorage.getItem("token")
+  const nav = useNavigate()
+
+  useEffect(() => {
+    if (isAuth) {
+      nav("/space")
+    }
+  }, [])
 
   return (
     <section className={"min-h-screen flex items-center justify-center"}>
@@ -46,7 +55,9 @@ function AuthPage()
           <Button title={"google"} className={"bg-red-500 p-2 text-sm"}/>
         </div>
 
-        <Button title={"sign up"} className={"bg-white text-black border-2 p-2 text-sm"}/>
+        <Link to={"/sign-up"}>
+          <Button title={"sign up"} className={"bg-white text-black border-2 p-2 text-sm"}/>
+        </Link>
 
       </article>
     </section>
