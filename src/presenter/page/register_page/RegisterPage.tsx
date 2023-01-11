@@ -3,6 +3,7 @@ import { useState } from "react"
 import {Button, TextInput, PasswordInput} from "../../component"
 import {env} from "../../../constant"
 import {SuccessModal} from "./SuccessModal";
+import {Link} from "react-router-dom";
 
 interface SignUpFormProps
 {
@@ -48,12 +49,12 @@ function RegisterPage(props: SignUpFormProps)
         setIsNotificationOpen(true)
       })
       .catch((res) => {
-        console.log(res.response.data.errors)
         const errors = res.response.data.errors
-        setEmailField({...emailField, error: errors.email[0]})
-        setUsernameField({...usernameField, error: errors.username[0]})
-        setPasswordField({...passwordField, error: errors.password[0]})
-        setConfirmPasswordField({...confirmPasswordField, error: errors.confirm_password[0]})
+        console.log(res)
+        errors.email && setEmailField({...emailField, error: errors.email[0]})
+        errors.username && setUsernameField({...usernameField, error: errors.username[0]})
+        errors.password && setPasswordField({...passwordField, error: errors.password[0]})
+        errors.confirm_password && setConfirmPasswordField({...confirmPasswordField, error: errors.confirm_password[0]})
       })
   }
 
@@ -105,7 +106,9 @@ function RegisterPage(props: SignUpFormProps)
           <Button title={"google"} className={"bg-red-500 p-2 text-sm"}/>
         </div>
 
-        <Button title={"sign in"} className={"bg-white text-black border-2 p-2 text-sm"}/>
+        <Link to={"/sign-in"}>
+          <Button title={"sign in"} className={"bg-white text-black border-2 p-2 text-sm"}/>
+        </Link>
 
       </article>
     </section>

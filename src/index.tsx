@@ -11,11 +11,11 @@ const root = ReactDOM.createRoot(
 )
 
 root.render(
-   <React.StrictMode>
-      <BrowserRouter>
-         <RootRoutes/>
-      </BrowserRouter>
-   </React.StrictMode>
+  <div className={"overflow-x-hidden"}>
+    <BrowserRouter>
+      <RootRoutes/>
+    </BrowserRouter>
+  </div>
 )
 
 reportWebVitals()
