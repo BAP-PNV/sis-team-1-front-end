@@ -7,7 +7,7 @@ import {useEffect, useState, useRef} from "react"
 import { env } from "../../../constant";
 import axios from "axios";
 import {Button} from "../../component";
-import {useParams} from "react-router-dom"
+import {useParams, useNavigate} from "react-router-dom"
 
 type SpacePageProps =
 {
@@ -18,6 +18,7 @@ type SpacePageCustomProps = HTMLAttributes<HTMLDivElement> & SpacePageProps
 
 function SpacePage(props: SpacePageCustomProps)
 {
+  const nav = useNavigate()
   let {folderId} = useParams()
   const spaceRef = useRef(null)
 
@@ -44,6 +45,8 @@ function SpacePage(props: SpacePageCustomProps)
       })
       .catch((error) => {
         console.error(error)
+        localStorage.setItem("token", "")
+        nav("/sign-in")
       })
 
   }, [folderId])

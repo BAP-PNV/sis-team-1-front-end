@@ -14,7 +14,7 @@ function ConfirmPage()
       .then((res) => {
         setError(false)
         navigate("/space")
-        sessionStorage.setItem("token", res.data.data.token)
+        localStorage.setItem("token", res.data.data.token)
       })
       .catch((error) => {
         setError(true)
@@ -23,12 +23,12 @@ function ConfirmPage()
   }, [])
 
   return (
-    <div>
+    <div className={"min-h-screen flex items-center justify-center"}>
       {
         error === null ? (
-          <div>Loading</div>
+          <div className={"text-2xl"}>Verifying Your Account...</div>
         ) : (
-          !error ? null : (<div>can not confirm your account, please visit the link that we send to your email</div>)
+          !error ? <div className={"text-2xl"}>Great! Welcome</div> : (<div className={"text-2xl"}>can not confirm your account, please visit the link that we send to your email</div>)
         )
       }
     </div>

@@ -1,4 +1,4 @@
-import {Button, LinkButton, TextInput} from "../../component"
+import {Button, LinkButton, TextInput, PasswordInput} from "../../component"
 import {useState, useEffect} from "react";
 import axios from "axios";
 import {env} from "../../../constant";
@@ -43,8 +43,8 @@ function AuthPage()
           <h1 className={"text-3xl font-black text-green-900 uppercase"}>the Fraking PHP</h1>
         </div>
 
-        <TextInput onChange={setEmail} className={"mb-5"} placeholder={"email"} name={"email"}/>
-        <TextInput onChange={setPassword} className={"mb-5"} placeholder={"password"} name={"password"}/>
+        <TextInput onChange={setEmail} className={"mb-5"} placeholder={"username"} name={"email"}/>
+        <PasswordInput onChange={setPassword} className={"mb-5"} placeholder={"password"} name={"password"}/>
 
         <Button onClick={onSignIn} title={"sign in"} className={"mb-5"}/>
 

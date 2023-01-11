@@ -26,7 +26,9 @@ function RecentFileContainer(props: RecentFileContainerCustomProps)
       <section className={"grid grid-cols-6 gap-4"}>
         {
           recentFileList ? recentFileList.map((value: any, index: number) => {
-            return <FileCard url={value.url} name={value.name} key={index}/>
+            return <a key={index} href={value.url} target={"_blank"}>
+              <FileCard url={value.url} name={value.name}/>
+            </a>
           }) : <div>no recent file</div>
         }
       </section>
